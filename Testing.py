@@ -29,7 +29,7 @@ def get_store_data(driver):
     store_data = []
     for row in rows:
         store_name = row.find_element("xpath', "(//h6[@class='MuiTypography-root MuiTypography-subtitle2 css-u2nh6v'])[1]").text
-        monthly_data = [float(cell.text.replace("$", "")) for cell in row.find_elements(By.XPATH, "(//h6[@class='MuiTypography-root MuiTypography-subtitle2 css-u2nh6v'])[2]")]
+        monthly_data = [float(cell.text.replace("$", "")) for cell in row.find_elements("xpath", "(//h6[@class='MuiTypography-root MuiTypography-subtitle2 css-u2nh6v'])[2]")]
         store_data.append((store_name, monthly_data))
     return store_data
 
@@ -53,9 +53,9 @@ def verify_grand_totals(driver, expected_totals):
         else:
             print(f"Grand total for month {i+1} matches: ${expected:.2f}")
 
-def take_screenshot(driver, filename):
+def take_screenshot(driver, file):
     """Takes a screenshot of the browser window"""
-    driver.save_screenshot(filename)
+    driver.save_screenshot(file)
 
 def main():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
