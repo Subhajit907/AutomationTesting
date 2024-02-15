@@ -28,7 +28,7 @@ def get_store_data(driver):
     rows = driver.find_elements("xpath", "(//h6[@class='MuiTypography-root MuiTypography-subtitle2 css-m09714-MuiTypography-root'])[2]")
     store_data = []
     for row in rows:
-        store_name = row.find_element(By.XPATH, "(//h6[@class='MuiTypography-root MuiTypography-subtitle2 css-u2nh6v'])[1]").text
+        store_name = row.find_element("xpath', "(//h6[@class='MuiTypography-root MuiTypography-subtitle2 css-u2nh6v'])[1]").text
         monthly_data = [float(cell.text.replace("$", "")) for cell in row.find_elements(By.XPATH, "(//h6[@class='MuiTypography-root MuiTypography-subtitle2 css-u2nh6v'])[2]")]
         store_data.append((store_name, monthly_data))
     return store_data
